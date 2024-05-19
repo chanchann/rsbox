@@ -23,3 +23,10 @@ impl Prods for Phone {
         &self.price + 20.0
     }
 }
+
+impl std::ops::Add<Book> for Book {
+    type Output = f32;
+    fn add(self, rhs: Book) -> f32 {
+        self.get_price() + rhs.get_price()
+    }
+}
