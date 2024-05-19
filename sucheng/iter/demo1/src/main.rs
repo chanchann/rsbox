@@ -22,8 +22,28 @@ fn test_iter_mut() {
 fn test_into_iter() {
     let list = [String::from("u1"), String::from("u2")];
     let new_list = list.into_iter().map(|mut item| {
-        item.push_str("--user")
+        item.push_str("--user");
     });
+    // Map { iter: IntoIter(["u1", "u2"]) }
+    println!("{:?}", new_list);
+}
+
+fn test_into_iter2() {
+    let list = [String::from("u1"), String::from("u2")];
+    // Hafve to know the type
+    let new_list: Vec<String> = list.into_iter().map(|mut item| {
+        item.push_str("--user");
+        item
+    }).collect();
+    println!("{:?}", new_list);
+}
+
+fn test_into_iter3() {
+    let list = [String::from("u1"), String::from("u2")];
+    let new_list = list.into_iter().map(|mut item| {
+        item.push_str("--user");
+        item
+    }).collect::<Vec<String>>();
     println!("{:?}", new_list);
 }
 
@@ -31,4 +51,6 @@ fn main() {
     test_iter();
     test_iter_mut();
     test_into_iter();
+    test_into_iter2();
+    test_into_iter3();
 }
