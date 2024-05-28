@@ -18,11 +18,11 @@ async fn main() -> Result<(), sqlx::Error> {
                                       .connect(&connection_str).await?;
     let ret = sqlx::query("select id, user_name, user_age from test_user").fetch_all(&pool).await?;
     ret.iter().for_each(|row| {
-        println!("{}", row.get::<i32, _>("id"));
-        // println!("{:?}", row.get::<&str, _>(1));
+        println!("id : {}, name : {}", row.get::<i32, _>("id"),
+                                       row.get::<&str, _>(1));
     });
 
-    let ret = sqlx::query("insert into users (user_name, user_age) values (?,?)").bind("abc").bind(10).execute(&pool).await?;
+    let ret = sqlx::query("insert into test_user (user_name, user_age) values (?,?)").bind("abc").bind(10).execute(&pool).await?;
     println!("{:?}", ret.last_insert_id());
     Ok(())
 }
