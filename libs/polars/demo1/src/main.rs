@@ -60,8 +60,26 @@ fn test_series_cal() -> Result<(), PolarsError> {
     Ok(())
 }
 
+fn test_group_by() -> anyhow::Result<()>{
+    let mut df = CsvReadOptions::default()
+    .with_infer_schema_length(None)
+    .with_has_header(true)
+    .try_into_reader_with_file_path(Some(CSV_PATH.into()))?
+    .finish()?;
+    println!("{:?}", df);
+
+    let g = df.group_by(["ts_code"])?.count()?;
+    println!("{:?}", g);
+
+    let g = df.group_by(["ts_code"])?.select(["open"]).count()?;
+
+    println!("{:?}", g);
+    Ok(())
+}
+
 fn main() {
-    test_series();
-    test_csv();
-    test_series_cal();
+    // test_series();
+    // test_csv();
+    // test_series_cal();
+    let _ = test_group_by();
 }
