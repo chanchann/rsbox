@@ -21,13 +21,13 @@ static POOL: OnceCell<Pool<MySql>> = OnceCell::new();
 const CSV_PATH: &str = "./test.csv";
 #[tokio::main]
 async fn main() -> anyhow::Result<()> {
-    dotenv().ok();
-    let connection_str = env::var("DATABASE_URL")
-        .expect("Database url not specified");
+    // dotenv().ok();
+    // let connection_str = env::var("DATABASE_URL")
+    //     .expect("Database url not specified");
 
     // init global pool first
-    POOL.set(MySqlPoolOptions::new().max_connections(10)
-                                    .connect(&connection_str).await?).unwrap();
+    // POOL.set(MySqlPoolOptions::new().max_connections(10)
+    //                                 .connect(&connection_str).await?).unwrap();
     let mut df = CsvReadOptions::default()
                                 .with_infer_schema_length(None)
                                 .with_has_header(true)
@@ -40,8 +40,9 @@ async fn main() -> anyhow::Result<()> {
     println!("{:?}", df);
 
     // 拼凑sql 入库
+    // insert into xxx values (xx, xx), (xx, xx), (xx, xx);
     // let mut query_builder: QueryBuilder<MySql> = QueryBuilder::new("INSERT INTO users(id, username, email, password) ";
-
-
+    // query_builder.sql()
+    // qeury_builder.build().execute(POOL.get().unwrap()).unwrap();
     Ok(())
 }
