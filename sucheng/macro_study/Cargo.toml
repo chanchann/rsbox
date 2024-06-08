@@ -1,0 +1,9 @@
+[package]
+name = "macro_study"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+
+[[example]]
+name="test"
