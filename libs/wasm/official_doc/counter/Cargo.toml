@@ -1,0 +1,8 @@
+[package]
+name = "counter"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+stdweb = "0.4.20"
+yew = { version = "0.14.3", features = ["services", "std_web"] }
