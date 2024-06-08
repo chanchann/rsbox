@@ -10,5 +10,21 @@ https://developer.mozilla.org/en-US/docs/WebAssembly/Rust_to_wasm
 
 wasm-pack build --target nodejs/web
 
+wasm-pack build -t nodejs/web
+
 ## node 调用
+
+下载nodejs
+
+sudo apt install nodejs npm
+
+运行
+
+node test
+
+## 前端交互
+
+先装webpack工具
+
+npm install webpack webpack-cli webpack-dev-server
 

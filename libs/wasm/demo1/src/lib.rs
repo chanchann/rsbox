@@ -1,12 +1,11 @@
 extern crate wasm_bindgen;
-
+mod models;
 use wasm_bindgen::prelude::*;
 
 #[wasm_bindgen]
 pub fn echo() -> String {
     format!("{}", "chanchan")
 }
-
 
 // 我们想直接使用js里面的console.log
 #[wasm_bindgen]
@@ -36,3 +35,4 @@ macro_rules! echo_macro {
 pub fn log_macro(s: &str) {
     echo_macro!(s);
 }
+

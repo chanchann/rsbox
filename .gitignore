@@ -16,3 +16,5 @@ Cargo.lock
 **/.env
 
 pkg/
+
+node_modules/

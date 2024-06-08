@@ -14,7 +14,7 @@ macro_rules! me {
     };
     // 可变参数
     // * / +
-    ($($exp: expr), *) => {
+    ($($exp: expr), +) => {
         $(
             println!("{}", stringify!($exp));
         )+
@@ -29,4 +29,6 @@ fn main() {
     echo!(a == 3);
     echo!(a);
     me!(a == 3);
+
+    me!("ab", "cd", "ef");
 }
