@@ -1,0 +1,8 @@
+[package]
+name = "better_arch"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+yew = "0.19"
+gloo = "0.6"
