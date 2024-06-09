@@ -76,6 +76,7 @@ async fn main() -> Result<(), Box<dyn Error>> {
     let transport = libp2p::development_transport(local_key).await?;
 
     // Create a Floodsub topic
+    // 同01，02不同，需要订阅同一个topic才会收发消息
     let floodsub_topic = floodsub::Topic::new("chat");
 
     // We create a custom network behaviour that combines floodsub and mDNS.

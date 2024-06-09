@@ -40,6 +40,7 @@ async fn main() -> Result<(),Box<dyn Error>>{
 
     let mut swarm = Swarm::new(transport, behaviour, peer_id);
 
+    // 这里我们需要去拨号
     if let Some(addr) = std::env::args().nth(1) {
         let remote: Multiaddr = addr.parse()?;
         swarm.dial(remote)?;

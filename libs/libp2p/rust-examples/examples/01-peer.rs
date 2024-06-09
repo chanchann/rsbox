@@ -37,6 +37,7 @@ async fn main() -> Result<(),Box<dyn Error>>{
         id_keys.public(),
     )); 
 
+    // 传输层把传输层和协议装一起
     let mut swarm = Swarm::new(transport, behaviour, peer_id);
 
     // Tell the swarm to listen on all interfaces and a random, OS-assigned
