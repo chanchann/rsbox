@@ -1,3 +1,5 @@
+use serde::{Deserialize, Serialize};
+
 /// The recipe data for cook
 #[derive(Debug, Serialize, Deserialize)]
 pub struct Recipe {

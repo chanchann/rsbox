@@ -43,6 +43,4 @@ fn main() {
     let end_time = Utc::now().time();
     // 2s
     println!("Cost: {}", (end_time - start_time).num_seconds());
-
-
 }
