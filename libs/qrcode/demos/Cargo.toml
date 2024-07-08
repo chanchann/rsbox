@@ -1,0 +1,11 @@
+[package]
+name = "demos"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+qrcode = "0.14.1"
+image = "0.25.1"
+
+[[example]]
+name = "demo1"
