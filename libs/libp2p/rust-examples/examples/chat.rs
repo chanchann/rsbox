@@ -87,7 +87,7 @@ async fn main() -> Result<(), Box<dyn Error>> {
     #[behaviour(out_event = "OutEvent")]
     struct MyBehaviour {
         floodsub: Floodsub,
-        mdns: Mdns,
+        mdns: Mdns,  // ** 
 
         // Struct fields which do not implement NetworkBehaviour need to be ignored
         #[behaviour(ignore)]
