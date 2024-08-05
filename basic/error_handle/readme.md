@@ -138,6 +138,16 @@ let p: Person = match serde_json::from_str(data) {
 let p:Person = serde_json::from_str(data)?;
 ```
 
+tips:
+
+`e.into()` 是在 Rust 中进行类型转换的一种常见方法。这里的 `into()` 是 `Into` trait 的方法，它尝试将一个值转换为另一个类型。
+
+在这个上下文中，`e.into()` 可能是在将一种错误类型转换为另一种更通用的错误类型。这通常用于错误处理，特别是当你想要将一个特定的错误类型转换为一个更通用的错误类型时。
+
+例如，如果函数返回的是一个 `Result<T, MyError>`，但 `serde_json::from_str` 返回的是 `Result<T, serde_json::Error>`，你可能需要将 `serde_json::Error` 转换为 `MyError`。
+
+`into()` 方法会尝试进行这种转换，前提是已经为相关类型实现了 `From` trait。这是一种常见的错误处理模式，允许你在保留原始错误信息的同时，将错误转换为你的函数签名所期望的类型。
+
 # 5 使用unwrap和?解包Option
 
 ```rust
