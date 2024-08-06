@@ -50,6 +50,11 @@ async fn create_session(data: web::Data<AppState>) -> impl Responder {
 // 获取会话信息
 async fn get_session(session_id: web::Path<String>, data: web::Data<AppState>) -> impl Responder {
     let sessions = data.sessions.lock().unwrap();
+    // `session_id.into_inner()` 是一个方法调用，用于从 `web::Path<String>` 类型中提取内部的 `String` 值。
+    // 在 Actix-web 中，当你使用路径参数时（如 `/session/{id}`），这个参数会被包装在一个 `web::Path` 类型中。
+    // `web::Path` 是一个封装类型，它包含了从 URL 路径中提取的参数值。    
+    // `into_inner()` 方法用于消费 `web::Path` 并返回其内部的值。在这个情况下，它返回路径中的 `id` 参数作为一个 `String`。
+    // 这样做的目的是为了获取实际的会话 ID 字符串，以便在 `sessions` HashMap 中查找对应的会话数据。
     match sessions.get(&session_id.into_inner()) {
         Some(session_data) => HttpResponse::Ok().json(session_data),
         None => HttpResponse::NotFound().body("Session not found"),
