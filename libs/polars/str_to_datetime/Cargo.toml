@@ -1,0 +1,11 @@
+[package]
+name = "str_to_datetime"
+version = "0.1.0"
+edition = "2021"
+
+[[example]]
+name = "demo1"
+path = "examples/demo1.rs"
+
+[dependencies]
+polars = { version = "0.41.0", features = ["lazy", "strings"] }
